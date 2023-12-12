@@ -1,0 +1,286 @@
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9c9292;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(241, 241, 241, 0);
+}
+
+::-webkit-scrollbar-corner {
+  background-color: rgba(241, 241, 241, 0);
+}
+
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+.none {
+  display: none !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .main_con {
+  max-width: 600px;
+  width: 100%;
+  gap: 10px;
+  flex-direction: column;
+  position: relative;
+  display: flex;
+  padding: 20px;
+}
+main .main_con .main_top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+main .main_con .main_top .info_block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+main .main_con .main_top .info_block .stul,
+main .main_con .main_top .info_block .id,
+main .main_con .main_top .info_block .ai {
+  color: #008000;
+  text-align: center;
+  font-size: 13px;
+}
+main .main_con .main_top .toggle {
+  min-height: 31px !important;
+}
+main .main_con .main_top .toggle-handle {
+  background: #ffffff;
+}
+main .main_con .main_top .btn-check:checked + .btn,
+main .main_con .main_top .btn.active,
+main .main_con .main_top .btn.show,
+main .main_con .main_top .btn:first-child:active,
+main .main_con .main_top :not(.btn-check) + .btn:active {
+  background-color: #2f889b !important;
+  border-color: #2f889b !important;
+}
+main .main_con .main_top .btn-danger {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #2f889b !important;
+  --bs-btn-border-color: #2f889b !important;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #2f889b !important;
+  --bs-btn-hover-border-color: #2f889b !important;
+  --bs-btn-focus-shadow-rgb: 225, 83, 97;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #2f889b !important;
+  --bs-btn-active-border-color: #2f889b !important;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #2f889b !important;
+  --bs-btn-disabled-border-color: #2f889b !important;
+}
+main .main_con .main_top .toggle-group label {
+  line-height: 100% !important;
+}
+main .main_con .chats_list {
+  padding: 0;
+  max-height: 60vh;
+  overflow: auto;
+}
+main .main_con .chats_list .btns_chat_list {
+  display: flex;
+  width: -webkit-fill-available;
+  position: relative;
+  gap: 5px;
+  bottom: 0;
+  background: #fff;
+  min-width: 164px;
+  margin: 3px 5px 5px 5px;
+}
+main .main_con .chats_list .btns_chat_list .btn-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .main_con .chats_list .btns_chat_list .btn-outline-danger {
+  width: -webkit-fill-available;
+}
+main .main_con .chats_list .btns_chat_list .btn-outline-danger svg {
+  margin-right: 5px;
+}
+main .main_con .chats_list .no_chats {
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+main .main_con .chats_list .chat {
+  max-width: 200px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3px;
+  margin: 0 5px 2px 5px;
+}
+main .main_con .chats_list .chat:first-child {
+  margin-top: 5px;
+}
+main .main_con .chats_list .chat:hover {
+  background: rgba(190, 190, 190, 0.61);
+  transition: 0.3s;
+}
+main .main_con .chats_list .chat .chat_name {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  padding: 2px;
+}
+main .main_con .chats_list .chat .chat_name span {
+  font-size: 12px;
+  color: #008000;
+}
+main .main_con .chats_list .chat .delet_chat {
+  padding: 13px 3px;
+  font-size: 11px;
+}
+main .main_con .present {
+  display: flex;
+  align-items: center;
+}
+main .main_con .main_input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+main .main_con .main_input #delet,
+main .main_con .main_input #clear {
+  padding: 6px 8px;
+}
+main .main_con .text_main_block {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  max-height: 68vh;
+  overflow: auto;
+  gap: 10px;
+}
+main .main_con .text_main_block .sms_block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+main .main_con .text_main_block .sms_block .ava {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 500;
+  width: -moz-max-content;
+  width: max-content;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 3px;
+  border-radius: 0 0 10px 0;
+}
+main .main_con .text_main_block .sms_block .ava img {
+  width: 16px;
+}
+main .main_con .text_main_block .sms_block .sms {
+  padding: 3px 10px;
+  overflow: hidden;
+}
+main .main_con .text_main_block .sms_block .sms_midj {
+  padding: 10px;
+}
+main .main_con .text_main_block .sms_block .sms_midj .midj_img {
+  max-width: 300px;
+}
+
+.show-photo-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999999999;
+  background: rgba(0, 0, 0, 0.1098039216);
+}
+
+.show-photo {
+  max-width: 90vw;
+  max-height: 90vh;
+  z-index: 9999999999;
+  position: fixed;
+  margin: 0 auto;
+  background: #fff;
+}
+.show-photo img {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.none {
+  display: none !important;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.loader img {
+  animation: spin 1s linear infinite;
+  height: 40px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=style.css.map */
