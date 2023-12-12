@@ -67,6 +67,18 @@ main {
             align-items: center;
             justify-content: space-between;
             gap: 10px;
+            .dropleft {
+                .chat_list_btn {
+                    border-radius: 0.25rem;
+                }
+                .btn-success {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 5px;
+                    border-radius: 0.25rem;
+                }
+            }
             .info_block {
                 display: flex;
                 flex-wrap: wrap;
@@ -127,11 +139,6 @@ main {
                 background: #fff;
                 min-width: 164px;
                 margin: 3px 5px 5px 5px;
-                .btn-success {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
                 .btn-outline-danger {
                     width: -webkit-fill-available;
                     svg {
@@ -143,6 +150,9 @@ main {
                 padding: 10px;
                 text-align: center;
                 width: 100%;
+            }
+            .active {
+                background: rgb(183 158 182 / 61%);
             }
             .chat {
                 max-width: 200px;
@@ -187,9 +197,14 @@ main {
         .main_input {
             width: 100%;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
             gap: 10px;
+            textarea {
+                max-height: 129px;
+                resize: none;
+                height: 38px;
+            }
             #delet,
             #clear {
                 padding: 6px 8px;
@@ -226,6 +241,36 @@ main {
                 .sms {
                     padding: 3px 10px;
                     overflow: hidden;
+                    b {
+                        font-weight: 600 !important;
+                    }
+                }
+                .top_xmp {
+                    width: 100%;
+                    background: #7e7e7e;
+                    border-radius: 10px 10px 0 0;
+                    padding: 3px 16px;
+                    color: #fff;
+                    display: flex;
+                    width: -webkit-fill-available;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin: 10px 5px 0 5px;
+                    .copy_code {
+                        cursor: pointer;
+                    }
+                }
+                .xmp_code {
+                    width: -webkit-fill-available;
+                    margin: 0 5px 10px 5px;
+                    font-family: revert;
+                    padding: 8px 16px;
+                    border-radius: 0 0 10px 10px;
+                    background: #e1e1e1;
+                    overflow: auto;
+                    &::-webkit-scrollbar {
+                        height: 6px;
+                    }
                 }
                 .sms_midj {
                     padding: 10px;
@@ -281,5 +326,29 @@ main {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 450px) {
+    .info_block {
+        flex-direction: column;
+        .stul {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 430px) {
+    main .main_con {
+        padding: 20px 10px;
+        .main_top {
+            gap: 5px;
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .id {
+        display: none;
     }
 }

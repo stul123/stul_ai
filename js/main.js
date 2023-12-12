@@ -85,7 +85,7 @@ function load_chat(data, q) {
     if (data.method == 'create' || data.method == 'chat') {
         let otvet_block = document.createElement('div');
         otvet_block.className = 'sms_block';
-        otvet_block.innerHTML = `<div class="ava"><img src="./fav/favicon-16x16.png" alt="stul icon"><p>stulai</p></div><div class="sms">${codeformate(data.message)}</div>`;
+        otvet_block.innerHTML = `<div class="ava"><img src="./fav/favicon-16x16.png" alt="stul icon"><p>stulai</p></div><div class="sms">${smsformate(data.message)}</div>`;
         console.log(data.message);
         $('.loader').css('display', 'none');
         let id = data.chatCode;
@@ -112,8 +112,9 @@ function load_chat(data, q) {
                 localStorage.chats = JSON.stringify(db)
             }
         }
-        $('.id').html(`id: ${localStorage.chatid}`);
+        $('.id').html(`id:&nbsp;${localStorage.chatid}`);
         $('.text_main_block').append(otvet_block);
+        code_after_load();
         load_chatlist('no');
     } else if (def_app == 'midj') {
         if (data.image_base64 == undefined) {
@@ -165,8 +166,12 @@ function load_chatlist(chatload) {
             let id = item[0];
             let f_sms = item[1][0];
             let chat = document.createElement('div');
-            chat.className = 'chat';
-            chat.innerHTML = `<p class="chat_name" data-id="${id}">${f_sms}<br><span>id: ${id}</span></p> <div class="delet_chat" data-id="${id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+            var chat_class = "chat";
+            if (id == localStorage.chatid) {
+                chat_class = "chat active";
+            }
+            chat.className = chat_class;
+            chat.innerHTML = `<p class="chat_name" data-id="${id}">${f_sms}<br><span>id:&nbsp;${id}</span></p> <div class="delet_chat" data-id="${id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
             <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"></path>
             </svg></div>`;
             $('.chats_list').append(chat)
@@ -176,17 +181,10 @@ function load_chatlist(chatload) {
         btns_chat_list.innerHTML = `<button class="btn btn-outline-danger btn_clear btn-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"></path>
         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"></path>
-        </svg>удалить чаты</button>
-        <button type="button" class="btn btn-success btn-sm" id="creat_chat" title="создать чат">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
-                </svg>
-        </button>
-        `;
+        </svg>удалить чаты</button>`;
         $('.delet_chat').click(function() {
             let id = $(this).attr('data-id');
-            if (confirm(`точно удалить чат ? \nid: ${id}`)) {
+            if (confirm(`точно удалить чат ? \nid:&nbsp;${id}`)) {
                 let bd = JSON.parse(localStorage.chats);
                 let newbd = [];
                 bd.forEach(element => {
@@ -200,7 +198,7 @@ function load_chatlist(chatload) {
                     $('.text_main_block').html(`<div class="present">
                     <img src="./fav/favicon.ico" alt="stul">
                     <h2>- поможет</h2>
-                    </div><p>сайт в бете, код будет отображаться криво</p>`);
+                    </div><p>сайт в бете, по проблемам пишите </p>`);
                     $('.id').html('id: -');
                     load_chatlist();
                 } else {
@@ -216,37 +214,34 @@ function load_chatlist(chatload) {
                 $('.text_main_block').html(`<div class="present">
                 <img src="./fav/favicon.ico" alt="stul">
                 <h2>- поможет</h2>
-                </div><p>сайт в бете, код будет отображаться криво</p>`);
+                </div><p>сайт в бете, по проблемам пишите </p>`);
                 load_chatlist('no');
                 $('#q_input').focus();
             }
         });
         $('.chat_name').click(function() {
             let id = $(this).attr('data-id');
+            $('.chat').removeClass('active');
+            $($(this).parent()).addClass('active');
             open_chat(id);
-        });
-        $('#creat_chat').click(function() {
-            localStorage.removeItem('chatid');
-            $('.text_main_block').html(`<div class="present">
-            <img src="./fav/favicon.ico" alt="stul">
-            <h2>- поможет</h2>
-            </div><p>сайт в бете, код будет отображаться криво</p>`);
-            $('#q_input').focus();
-            $('.id').html('id: -');
         });
     } else {
         $('.chats_list').html(`<p class="no_chats">чатов нету <br> пиши stul'y AI</p>`)
     }
 }
 
-function codeformate(input) {
-    var regex = /```/g;
+function smsformate(input) {
     var count = 0;
-    var result = input.replace(regex, function(match) {
+    var result = input.replace(/```/g, function(match) {
         count++;
-        return count % 2 === 0 ? '</xmp>' : '<xmp>';
+        let code = generateCode();
+        return count % 2 === 0 ? '</xmp>' : `<div class="top_xmp"><p class="code_name" id="cn${code}"></p><p data-id="${code}" class="copy_code">📄 copy</p></div><xmp class="xmp_code" id="${code}">`;
     });
-    result = result.replace(/\n/g, '<br>')
+    count = 0;
+    result = result.replace(/`/g, function(match) {
+        count++;
+        return count % 2 === 0 ? '</xmp></b>' : '<b><xmp style="display: inline;">';
+    });
     return result;
 }
 
@@ -259,7 +254,7 @@ function load_save_chat(item, chatid) {
             if ((index + 1) % 2 === 0) {
                 let otvet_block = document.createElement('div');
                 otvet_block.className = 'sms_block';
-                otvet_block.innerHTML = `<div class="ava"><img src="./fav/favicon-16x16.png" alt="stul icon"><p>stulai</p></div><div class="sms">${codeformate(element)}</div>`;
+                otvet_block.innerHTML = `<div class="ava"><img src="./fav/favicon-16x16.png" alt="stul icon"><p>stulai</p></div><div class="sms">${smsformate(element)}</div>`;
                 $('.text_main_block').append(otvet_block);
             } else {
                 let sms_block = document.createElement('div');
@@ -268,7 +263,8 @@ function load_save_chat(item, chatid) {
                 $('.text_main_block').append(sms_block)
             }
         });
-        $('.id').html(`id: ${chatid}`);
+        code_after_load();
+        $('.id').html(`id:&nbsp;${chatid}`);
         localStorage.chatid = chatid;
         $(`.text_main_block`).animate({
             scrollTop: $(`.text_main_block`).prop("scrollHeight")
@@ -322,9 +318,11 @@ function load_mdj() {
 function show_photo() {
     $('.midj_img').click(function() {
         let src = $(this).attr('src');
-        $('.show-photo-bg').removeClass('none');
-        $('.show-photo').removeClass('none');
-        $('.show-photo img').attr('src', src)
+        if (src != './fav/error.png') {
+            $('.show-photo-bg').removeClass('none');
+            $('.show-photo').removeClass('none');
+            $('.show-photo img').attr('src', src);
+        }
     });
     $('.show-photo-bg').click(function() {
         $('.show-photo-bg').addClass('none');
@@ -348,7 +346,8 @@ $(document).ready(function() {
         $('.ai').html('midjourney / долго / english');
         $('.stul').html('');
         $('.id').html('');
-        $('.dropdown-toggle').attr('disabled', 'disabled');
+        $('.chat_list_btn').attr('disabled', 'disabled');
+        $('.dropleft .btn-success').attr('disabled', 'disabled');
         $('#q_input').focus();
         $('.toggle').addClass('off btn-danger');
         $('.toggle').removeClass('btn-primary');
@@ -377,9 +376,10 @@ function toggleAI() {
         $('.text_main_block').html(`<div class="present">
         <img src="./fav/favicon.ico" alt="stul">
         <h2>- поможет</h2>
-        </div><p>сайт в бете, код будет отображаться криво</p>`);
+        </div><p>сайт в бете, по проблемам пишите </p>`);
         $('.id').html('id: -');
-        $('.dropdown-toggle').removeAttr('disabled');
+        $('.chat_list_btn').removeAttr('disabled');
+        $('.dropleft .btn-success').removeAttr('disabled');
         $('#q_input').focus();
         load_chatlist();
     } else {
@@ -388,7 +388,8 @@ function toggleAI() {
         $('.ai').html('midjourney / долго / english');
         $('.stul').html('');
         $('.id').html('');
-        $('.dropdown-toggle').attr('disabled', 'disabled');
+        $('.chat_list_btn').attr('disabled', 'disabled');
+        $('.dropleft .btn-success').attr('disabled', 'disabled');
         $('#q_input').focus();
         load_mdj();
         let clear_btn = document.createElement('div');
@@ -404,3 +405,75 @@ function toggleAI() {
         });
     }
 }
+
+function copyText(text) {
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+}
+
+function generateCode() {
+    let code = '';
+    const digits = '0123456789';
+    for (let i = 0; i < 10; i++) {
+        const randomIndex = Math.floor(Math.random() * digits.length);
+        code += digits[randomIndex];
+    }
+    return code;
+}
+
+function code_after_load() {
+    let xmps = document.querySelectorAll('xmp');
+    xmps.forEach(function(xmp) {
+        let code = xmp.textContent;
+        let words = code.split('\n');
+        let leng = words.shift();
+        let newcode = words.join('\n');
+        xmp.textContent = newcode;
+        if (leng === 'html' || leng === 'css' || leng === 'csharp' || leng === 'cpp' || leng === 'javascript' || leng === 'java' || leng === 'python' || leng === 'ruby' || leng === 'go' || leng === 'typescript' || leng === 'swift' || leng === 'kotlin' || leng === 'rust' || leng === 'matlab') {
+
+        } else if (xmp.textContent == '') {
+            xmp.textContent = leng;
+            leng = 'code';
+        } else {
+            leng = 'code';
+        }
+        let id = xmp.getAttribute('id');
+        $(`#cn${id}`).html(leng)
+    });
+    $('.copy_code').click(function() {
+        let id = $(this).attr('data-id')
+        copyText($(`#${id}`).text())
+        $(this).html('✓ стыбзил !');
+        setTimeout(() => {
+            $(this).html('📄 copy')
+        }, 1500);
+    });
+}
+
+$('#creat_chat').click(function() {
+    localStorage.removeItem('chatid');
+    $('.text_main_block').html(`<div class="present">
+    <img src="./fav/favicon.ico" alt="stul">
+    <h2>- поможет</h2>
+    </div><p>сайт в бете, по проблемам пишите </p>`);
+    $('#q_input').focus();
+    $('.id').html('id: -');
+});
+
+$('#q_input').keyup(function() {
+    this.style.overflow = 'hidden';
+    this.style.height = 0;
+    this.style.height = this.scrollHeight + 'px';
+})
+
+
+document.querySelector('#q_input').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault();
+        $('#start_q').click();
+    }
+});

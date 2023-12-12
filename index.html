@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="chatGPT, chatgpt, midjourney, нейронки, нейронка, AI, ai, stulai, stul, smski.site, smski site, смски сайт, смски.сайт, стул нейронка,stul нейронка">
     <meta name="description" content="быстрый и полезный chatGPT и медленный, но рабочий midjourney от stula">
     <meta name="author" content="smski.site | stulai">
     <meta property="og:site_name" content="free chatGPT / midjourney by stul">
@@ -33,8 +34,14 @@
         <div class="main_con rounded-4 shadow">
             <div class="main_top">
                 <div class="btn-group dropleft">
-                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-primary btn-sm chat_list_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         chats
+                    </button>
+                    <button type="button" class="btn btn-success btn-sm" id="creat_chat" title="создать чат">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                        </svg>
                     </button>
                     <div class="dropdown-menu chats_list" x-placement="right-start"></div>
                 </div>
@@ -52,12 +59,12 @@
                     <img src="./fav/favicon.ico" alt="stul">
                     <h2>- поможет</h2>
                 </div>
-                <p>сайт в бете, код будет отображаться криво</p>
+                <p>сайт в бете, по проблемам пишите </p>
             </div>
             <div class="loader_block"></div>
             <iframe name="votar" style="display:none;"></iframe>
             <form class="main_input" target="votar">
-                <input type="text" class="form-control" id="q_input" autocomplete="off" autofocus placeholder="Че скажешь stul'у AI?">
+                <textarea type="text" class="form-control" id="q_input" autocomplete="off" autofocus placeholder="Че скажешь stul'у AI?"></textarea>
                 <button class="btn btn-primary" id="start_q" type="submit">▶</button>
             </form>
         </div>

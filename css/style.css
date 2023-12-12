@@ -70,6 +70,16 @@ main .main_con .main_top {
   justify-content: space-between;
   gap: 10px;
 }
+main .main_con .main_top .dropleft .chat_list_btn {
+  border-radius: 0.25rem;
+}
+main .main_con .main_top .dropleft .btn-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  border-radius: 0.25rem;
+}
 main .main_con .main_top .info_block {
   display: flex;
   flex-wrap: wrap;
@@ -131,11 +141,6 @@ main .main_con .chats_list .btns_chat_list {
   min-width: 164px;
   margin: 3px 5px 5px 5px;
 }
-main .main_con .chats_list .btns_chat_list .btn-success {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 main .main_con .chats_list .btns_chat_list .btn-outline-danger {
   width: -webkit-fill-available;
 }
@@ -146,6 +151,9 @@ main .main_con .chats_list .no_chats {
   padding: 10px;
   text-align: center;
   width: 100%;
+}
+main .main_con .chats_list .active {
+  background: rgba(183, 158, 182, 0.61);
 }
 main .main_con .chats_list .chat {
   max-width: 200px;
@@ -189,9 +197,14 @@ main .main_con .present {
 main .main_con .main_input {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   gap: 10px;
+}
+main .main_con .main_input textarea {
+  max-height: 129px;
+  resize: none;
+  height: 38px;
 }
 main .main_con .main_input #delet,
 main .main_con .main_input #clear {
@@ -231,6 +244,36 @@ main .main_con .text_main_block .sms_block .ava img {
 main .main_con .text_main_block .sms_block .sms {
   padding: 3px 10px;
   overflow: hidden;
+}
+main .main_con .text_main_block .sms_block .sms b {
+  font-weight: 600 !important;
+}
+main .main_con .text_main_block .sms_block .top_xmp {
+  width: 100%;
+  background: #7e7e7e;
+  border-radius: 10px 10px 0 0;
+  padding: 3px 16px;
+  color: #fff;
+  display: flex;
+  width: -webkit-fill-available;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 5px 0 5px;
+}
+main .main_con .text_main_block .sms_block .top_xmp .copy_code {
+  cursor: pointer;
+}
+main .main_con .text_main_block .sms_block .xmp_code {
+  width: -webkit-fill-available;
+  margin: 0 5px 10px 5px;
+  font-family: revert;
+  padding: 8px 16px;
+  border-radius: 0 0 10px 10px;
+  background: #e1e1e1;
+  overflow: auto;
+}
+main .main_con .text_main_block .sms_block .xmp_code::-webkit-scrollbar {
+  height: 6px;
 }
 main .main_con .text_main_block .sms_block .sms_midj {
   padding: 10px;
@@ -282,5 +325,26 @@ main .main_con .text_main_block .sms_block .sms_midj .midj_img {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media (max-width: 450px) {
+  .info_block {
+    flex-direction: column;
+  }
+  .info_block .stul {
+    display: none;
+  }
+}
+@media (max-width: 430px) {
+  main .main_con {
+    padding: 20px 10px;
+  }
+  main .main_con .main_top {
+    gap: 5px;
+  }
+}
+@media (max-width: 400px) {
+  .id {
+    display: none;
   }
 }/*# sourceMappingURL=style.css.map */
